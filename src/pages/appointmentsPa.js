@@ -148,21 +148,6 @@ export default function AppointmentsPa() {
 
       <section className="form-main-continer">
       <div className="page-bg-min-con">
-          <div className="page-background page-back-4">
-            <FaHouseMedical />
-          </div>
-          <div className="page-background page-back-5">
-            <CiMedicalCross />
-          </div>
-          <div className="page-background page-back-2">
-            <CiMedicalCross />
-          </div>
-          <div className="page-background page-back-3">
-            <FaHandHoldingMedical />
-          </div>
-          <div className="page-background page-back-1">
-            <CiMedicalClipboard />
-          </div>
         </div>
         <div className="form-name-logo-con">
           <div className="form-icon-con">

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
+import { CiMedicalCross, CiMedicalClipboard } from "react-icons/ci";
+import { FaHandHoldingMedical,FaHouseMedical } from "react-icons/fa6";
 import { IoIosCreate } from "react-icons/io";
 import { FaUserFriends } from "react-icons/fa";
-import { RiFileSearchFill } from "react-icons/ri";
-
+import { TbReportMedical } from "react-icons/tb";
 import { MdPageview } from "react-icons/md";
 import { SiCashapp } from "react-icons/si";
 import { ImLab } from "react-icons/im";
@@ -33,8 +34,25 @@ export const SideNav = () => {
       >
         {/* -------log - dashbord - name----------- */}
         <div className="logo-con">
+        {/* <div className="page-bg-min-con-nav">
+          <div className="page-background-nav page-back-1-nav">
+            <FaHouseMedical />
+          </div>
+          <div className="page-background-nav page-back-5-nav">
+            <CiMedicalCross />
+          </div>
+          <div className="page-background-nav page-back-2-nav">
+            <CiMedicalCross />
+          </div>
+          <div className="page-background-nav page-back-3-nav">
+            <FaHandHoldingMedical />
+          </div>
+          <div className="page-background-nav page-back-4-nav">
+            <CiMedicalClipboard />
+          </div>
+        </div> */}
           <div className="icon-con">
-            <Link className="all-a-icons" to="/adminlogin">
+            <Link className="all-a-icons" to="/app">
               <ImLab className="site-log" />
             </Link>
             <h1
@@ -83,13 +101,27 @@ export const SideNav = () => {
               </Link>
             </NavLink>
           </div>
-
+          <div>
+            <NavLink className="nav-item-con" to="/TestReport">
+              <Link className="all-a-icons" to="/TestReport">
+                <TbReportMedical className="nav-item-icon" />
+              </Link>
+              <Link
+                className={`${
+                  isNavOpen ? "nav-item-con-a-active" : "nav-item-con-a"
+                }`}
+                to="/TestReport"
+              >
+                Test Report
+              </Link>
+            </NavLink>
+          </div>
         
          
           <div>
             <NavLink className="nav-item-con" to="/testdetails">
               <Link className="all-a-icons" to="/testdetails">
-                <RiFileSearchFill className="nav-item-icon" />
+                <MdManageSearch className="nav-item-icon" />
               </Link>
               <Link
                 className={`${
@@ -167,13 +199,13 @@ export const SideNav = () => {
           <span className="admin-span">Welcome Admin</span>
           <Link
             className={`${isNavOpen ? "logout-active" : "logout"}`}
-            to="/adminlogin"
+            to=""
           >
             <Link
               className={`${
                 isNavOpen ? "nav-item-con-a-active" : "nav-item-con-a"
               }`}
-              to="/adminlogin"
+              to=""
             >
               Log Out
             </Link>

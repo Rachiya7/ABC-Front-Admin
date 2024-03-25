@@ -12,13 +12,13 @@ import axios from "axios";
 export default function Registration() {
   
   const [values, setValues] = useState({
-    patientFName: "",
-    patientLName: "",
-    number: "",
+    name: "",
+    date: "",
+    patientId: "",
+    appointmentId: "",
     email: "",
-    password: "",
-    phonenumber: "",
-    gender: "",
+    amount: ""
+   
   });
   const [isLoding, setIsLoding] = useState(false);
  
@@ -30,21 +30,22 @@ export default function Registration() {
     e.preventDefault();
     setIsLoding(true);
     try {
-      const responce = await axios.post('http://localhost:9098/api/patient/Reg', {
-        patientFName: values.patientFName,
-        patientLName: values.patientLName,
-        number: values.number, 
+      const responce = await axios.post('http://localhost:9098/api/appointment/payment', {
+        name: values.name,
+        date: values.date,
+        patientId: values.patientId, 
+        appointmentId: values. appointmentId,
         email: values.email,
-        password: values.password,
-        phonenumber: values.phonenumber,
-        gender: values.gender
+        amount: values.amount
+        
+        
     });
-    alert("Patient Registration Successful");
+    alert("Payment Successful");
    
     }
     catch(err){
       console.log(err);
-      alert("Patient already exsist or invalid email Registration Failure!");
+      alert("Payment Failure!");
     }
     setIsLoding(false);
   }
@@ -55,21 +56,32 @@ export default function Registration() {
     {
       id: 10,
       inpuConClass: "fromInput field-con",
-      name: "patientFName",
-      placeholder: "First Name",
+      name: "name",
+      placeholder: "Name",
       type: "text",
-      errorMessage: "Please enter your first name",
-      label: "First Name",
+      errorMessage: "Please enter your name",
+      label: "Name",
       required: true,
     },
     {
       id: 1,
       inpuConClass: "fromInput field-con",
-      name: "patientLName",
-      placeholder: "Last Name",
+      name: "patientId",
+      placeholder: "Patient ID",
       type: "text",
-      errorMessage: "Please enter your last name",
-      label: "Last Name",
+      errorMessage: "Patient ID should be 6 characters long",
+      label: "Patient ID",
+      maxLength: "6",
+      required: true,
+    },
+    {
+      id: 30,
+      inpuConClass: "fromInput field-con",
+      name: "appointmentId",
+      placeholder: "Appointment ID",
+      type: "text",
+      errorMessage: "Appointment ID should be 8 characters long",
+      label: "Appointment ID",
       required: true,
     },
     {
@@ -83,42 +95,36 @@ export default function Registration() {
       required: true,
     },
     {
-      id: 3,
-      inpuConClass: "fromInput field-con",
-      name: "number",
-      placeholder: "0712 345 678",
-      type: "tel",
-      pattern: "[0-9]{10}$",
-      maxLength: "10",
-      errorMessage: "Please enter a valid phone number",
-      label: "Phone Number",
+      id: 5,
+      inpuConClass: "fromInput field-con bir-date",
+      name: "date",
+      placeholder: "Date",
+      type: "date",
+      errorMessage: "Please enter your date",
+      label: "Date",
       required: true,
     },
-   
-  ];
-
-  const inputs2 = [
-  
-
     {
-      id: 7,
+      id: 11,
       inpuConClass: "fromInput field-con",
-      name: "password",
-      placeholder: "Password",
-      type: "password",
-      errorMessage:
-        "Password should be 8-20 characters and include 1 letter, 1 number and 1 special character",
-      pattern: `^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,19}$`,
-      label: "Password",
+      name: "amount",
+      placeholder: "Amount",
+      type: "number",
+      errorMessage: "Please enter amount",
+      label: "amount",
       required: true,
     },
    
   ];
+
+  
 
 
   return (
     <main className="reg-from-center">
       <div className="page-name-con">
+      <div className="page-bg-min-con-nav">
+        </div>
         <div className="page-name-spaceholder"></div>
         <span className="page-log-span">
           <SiCashapp />
@@ -128,21 +134,6 @@ export default function Registration() {
 
       <section className="form-main-continer">
         <div className="page-bg-min-con">
-          <div className="page-background page-back-1">
-            <FaHouseMedical />
-          </div>
-          <div className="page-background page-back-5">
-            <CiMedicalCross />
-          </div>
-          <div className="page-background page-back-2">
-            <CiMedicalCross />
-          </div>
-          <div className="page-background page-back-3">
-            <FaHandHoldingMedical />
-          </div>
-          <div className="page-background page-back-4">
-            <CiMedicalClipboard />
-          </div>
         </div>
 
         <div className="form-name-logo-con">
@@ -164,14 +155,7 @@ export default function Registration() {
             />
           ))}
           
-           {inputs2.map((input) => (
-            <FormInput
-              key={input.id}
-              {...input}
-              value={values[input.name]}
-              onChange={onChange}
-            />
-          ))}
+       
 
           <button
           disabled={isLoding}

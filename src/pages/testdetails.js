@@ -60,6 +60,8 @@ export default function TestDetails() {
   return (
     <main className="reg-from-center">
       <div className="page-name-con">
+      {/* <div className="page-bg-min-con-nav">
+        </div> */}
         <div className="page-name-spaceholder"></div>
         <span className="page-log-span">
           <MdManageSearch />
@@ -69,21 +71,6 @@ export default function TestDetails() {
 
       <section className="form-main-continer">
         <div className="page-bg-min-con">
-          <div className="page-background page-back-1">
-            <FaHouseMedical />
-          </div>
-          <div className="page-background page-back-5">
-            <CiMedicalCross />
-          </div>
-          <div className="page-background page-back-2">
-            <CiMedicalCross />
-          </div>
-          <div className="page-background page-back-3">
-            <FaHandHoldingMedical />
-          </div>
-          <div className="page-background page-back-4">
-            <CiMedicalClipboard />
-          </div>
         </div>
         <div className="form-name-logo-con">
           <div className="form-icon-con">

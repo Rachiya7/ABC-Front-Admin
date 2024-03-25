@@ -99,7 +99,7 @@ export default function Appointments() {
       name: "appointmentId",
       placeholder: "Appointment ID",
       type: "text",
-      errorMessage: "Appointment ID should be 6 characters long",
+      errorMessage: "Appointment ID should be 8 characters long",
       label: "Appointment ID",
       required: true,
     },
@@ -123,8 +123,7 @@ export default function Appointments() {
       name: "patientId",
       placeholder: "Patient ID",
       type: "text",
-      errorMessage:
-        "Patient ID should 6-15 characters & should have at least one letter and number. special character(!@#$%) are not allowed",
+      errorMessage: "Patient ID should be 6 characters long",
       label: "Patient ID",
       maxLength: "6",
       required: true,
@@ -135,7 +134,7 @@ export default function Appointments() {
       name: "doctorName",
       placeholder: "Doctor Name",
       type: "text",
-      errorMessage: "Please enter your name",
+      errorMessage: "Please enter doctor(name) who reccmended the test",
       label: "Doctor Name",
       required: true,
     },
@@ -208,6 +207,8 @@ export default function Appointments() {
   return (
     <main className="reg-from-center">
       <div className="page-name-con">
+      <div className="page-bg-min-con-nav">
+        </div>
         <div className="page-name-spaceholder"></div>
         <span className="page-log-span">
           <HiOutlineClipboardList />
@@ -217,21 +218,6 @@ export default function Appointments() {
 
       <section className="form-main-continer">
         <div className="page-bg-min-con">
-          <div className="page-background page-back-4">
-            <FaHouseMedical />
-          </div>
-          <div className="page-background page-back-5">
-            <CiMedicalCross />
-          </div>
-          <div className="page-background page-back-2">
-            <CiMedicalCross />
-          </div>
-          <div className="page-background page-back-3">
-            <FaHandHoldingMedical />
-          </div>
-          <div className="page-background page-back-1">
-            <CiMedicalClipboard />
-          </div>
         </div>
         <div className="form-name-logo-con">
           <div className="form-icon-con">

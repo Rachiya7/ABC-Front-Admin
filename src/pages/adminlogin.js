@@ -1,46 +1,41 @@
 import { useState } from "react";
 // import { Link } from "react-router-dom";
 import FormInput from "../components/formInput";
-import { RiAdminLine } from "react-icons/ri";
-import { Navigate } from 'react-router-dom';
+import Img2 from "../png/img1.jpg";
+import { useNavigate } from 'react-router-dom';
+import { IoMdLogIn } from "react-icons/io";
 import axios from "axios";
 export default function AdminLogin() {
   const [logvalues, setValues] = useState({
     email: "",
     password: "",
   });
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
  
   const onChange = (e) => {
     setValues({ ...logvalues, [e.target.name]: e.target.value });
   };
   // const [isLoding, setIsLoding] = useState(false);
   // Function to handle form submission
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setIsLoggedIn(true);
     try {
-      const responce = await axios.post('http://localhost:9098/api/admin/login', {
-      
-        email: logvalues.email,
-        password: logvalues.password,
-
-    });
-    alert("Admin Registration Successful");
-   
+        const response = await axios.post('http://localhost:9098/api/admin/login', { 
+          email: logvalues.email,
+          password: logvalues.password
+         });
+         alert("Admin Login Successful");
+        console.log(response.data); // Handle success
+        navigate('/app'); // Redirect to main page
+    } catch (error) {
+        console.error('Login failed:', error.response.data); // Handle error
+        alert("Admin Login Failure!");
     }
-    catch(err){
-      console.log(err);
-      alert("Admin already exsist or invalid email. Registration Failure!");
-    }
-    setIsLoggedIn(false);
-  }
+};
 
  
-  if (isLoggedIn) {
-    return <Navigate to="/appointments" />;
-  }
+ 
   
   const aLInputs = [
     {
@@ -70,18 +65,21 @@ export default function AdminLogin() {
   console.log(logvalues);
   return (
     <div className="login-page-main-continer">
+
+       <div className="bg-blur"> <img className="welcom-img-bg" src={Img2} alt="" /></div>
+       
       <div className="login-main-continer">
         <section className="form-main-continer login-main">
           <div className="form-name-logo-con">
             <div className="form-icon-con">
-              <RiAdminLine />
+              < IoMdLogIn />
             </div>
-            <div className="form-name-con">
+            <div className="form-name-con" >
               <span>Admin LogIn</span>
             </div>
           </div>
 
-          <form className="admin-log-form" onSubmit={handleSubmit}>
+          <form className="admin-log-form" onSubmit={handleLogin}>
             {aLInputs.map((input) => (
               <FormInput
                 key={input.id}
@@ -94,7 +92,7 @@ export default function AdminLogin() {
 
             <button>LogIn</button>
           </form>
-         
+      
         </section>
       </div>
     </div>
